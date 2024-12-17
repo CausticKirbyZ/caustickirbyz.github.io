@@ -1,0 +1,23 @@
+name: site_gen
+version: 0.1.0
+
+authors:
+  - CausticKirbyZ <mikehedlund20@gmail.com>
+
+targets:
+  site_gen:
+    main: src/site_gen.cr
+
+crystal: '>= 1.13.1'
+
+license: MIT
+dependencies:
+  cmark:
+    github: amauryt/cr-cmark-gfm
+    version: ~> 0.1.3 
+  crinja:
+    github: straight-shoota/crinja
+  tallboy:
+    github: epoch/tallboy
+  tartrazine:
+    github: ralsina/tartrazine

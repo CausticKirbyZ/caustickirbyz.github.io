@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles/style.css">
+
+<%# if the markdown has code in it we can use highlight.js to give us syntax highlighing %>
+<% if highlighted_langs.size > 0  %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <%# not all languages are included by default, so we need to include the ones we need %>
+    <% highlighted_langs.each do |lang|  %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/<%= lang %>.min.js"></script>
+    <% end %>
+<% end %>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <script>
+            hljs.highlightAll();
+        </script>
+
+        
+        <header>
+            <div class="header">
+                <div class="header-left">
+                    <div style="display: flex">
+                        <img src="/images/plasma_kirby.png" style="height: 90px;">
+                        <h1 >CausticKirbyZ</h1>
+                    </div>
+                </div>
+
+                <!-- now add a dropdown menu for articles -->
+                <div class="header-right">
+                    <a href="/">Home</a>
+                    <a href="/whoami">whoami</a>
+                </div>
+            </div>
+        </header>
+
+
+
+
+        
+        <div class="container">
+            
+            <nav class="sidebar">
+                <h2>SideNav</h2>
+                <ul id="toc">
+                    <!-- JavaScript will populate this list -->
+                </ul>
+            </nav>
+
+
+            <div class="content">
+                <div style="float: top;">
+                    <h1><%= page_title %></h1>
+                    <a><%= date_str %></a>
+                </div>
+                <hr>
+                <div class="content" style="float: bottom;">
+                    <main class="content">
+                        <%= content %>
+                    </main>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toc = document.getElementById("toc");
+                const headers = document.querySelectorAll(".content h1, .content h2, .content h3, .content h4");
+
+                const getIndentLevel = (tagName) => {
+                    switch (tagName) {
+                        case 'H1': return 0;
+                        case 'H2': return 1;
+                        case 'H3': return 2;
+                        case 'H4': return 3;
+                        default: return 0;
+                    }
+                };
+
+                headers.forEach(header => {
+                    const id = header.textContent.toLowerCase().replace(/\s+/g, '-');
+                    header.id = id;
+
+                    const li = document.createElement("li");
+                    li.style.marginLeft = `${getIndentLevel(header.tagName) * 20}px`;
+                    const a = document.createElement("a");
+                    a.href = `#${id}`;
+                    a.textContent = header.textContent;
+                    li.appendChild(a);
+                    toc.appendChild(li);
+                });
+               
+            });
+        </script>
+    </body>
+</html>
