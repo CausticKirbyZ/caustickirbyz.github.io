@@ -1,0 +1,276 @@
+
+
+/* this will im port a fun new font style  */
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap'); */
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css'); */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css');
+
+:root {
+
+
+    /* for our main color scheme */
+    /* its going to be purple and gray  */
+    /* the goal here is to have as few total colors as needed  */
+    
+    /* first we will describe our colors */
+    --color-white: #ebebeb;
+    --color-extralight-gray: #393939;
+    --color-light-gray: #2a2a2a;
+    --color-dark-gray: #282729;
+    --color-light-purple: #9048ee;
+    --color-dark-purple: #5c3891;
+    --color-light-blue: #53d3fa;
+
+
+
+    /* then we will be more specific on what gets what */
+    --color-main-background: var(--color-dark-gray);
+    --color-sidebar-background: var(--color-light-gray);
+    
+    --color-link-text: var(--color-light-blue);
+    /* --color-p-text: var(--color-white); */
+
+
+    --color-header-text: var(--color-white);
+    --color-main-p-text: var(--color-white);
+
+
+
+    --color-text-headers: #9048ee; 
+    --color-blockquote-bg: var(--color-light-gray);
+
+
+
+
+    --table-header-background: var(--color-light-purple);
+    --table-header-text: var(--color-white);
+
+    --table-border-color: var(--color-light-purple);
+
+    --table-row-background: var(--color-light-gray);
+    --table-row-text: #301616; 
+
+
+
+    /* 
+#
+
+    
+    --color-sidebar-background: #333;
+    --color-sidebar-text: #fff;
+
+    --color-content-background: #fff;
+    --color-content-text: #333;
+
+
+
+}
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* margin: 0; */
+    /* font-family: Arial, sans-serif; */
+    font-family: "Orbitron", sans-serif;
+
+    color: var(--color-main-p-text);
+
+    line-height: 1.6;
+    /* margin: 2.5%; */
+    /* padding-left: 15%; */
+    background-color: var(--color-main-background);
+    /* background-image: linear-gradient(to top, #b87ff1, #19042e);  */
+    /* color: #333; */
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    /* color: var(--color-sidebar-text); */
+    padding: 1rem;
+    /* box-shadow: 0 2px 5px #0000001a; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+    /* background: rgb(144,72,238); */
+    background: var(--color-light-purple);
+    /* background: linear-gradient(
+        156deg, 
+        rgba(144,72,238,1) 
+        0%, rgba(92,56,145,1) 11%, 
+        rgba(40,39,41,1) 100%
+    ); */
+    background: linear-gradient(
+        156deg, 
+        var(--color-light-purple) 0%,
+        var(--color-dark-purple) 11%, 
+        var(--color-dark-gray) 100%
+    );
+}
+
+.header h1 {
+    color: var(--color-header-text);
+}
+.header-left {
+     display: flex;  
+     float: left;
+     align-items: center;
+}
+
+.header-right {
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+
+
+
+.sidebar {
+    /* width: 10%; */
+    background-color: var(--color-sidebar-background);
+    color: var(--color-sidebar-text);
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    /* width: 10%; */
+    max-width: 15%;
+    /* box-sizing: border-box; */
+}
+
+
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    /* height: 100vh; */
+    /* flex: 1; */
+}
+
+
+
+.content {
+    flex: 1;
+    padding: 1rem;
+}
+
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .content {
+        padding: 1rem 0;
+    }
+}
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 10px;
+    padding: 0;
+    color: var(--color-text-headers);
+}
+
+p {
+    color: var(--color-main-p-text);
+    margin: 10px 0;
+}
+
+a {
+    color: var(--color-link-text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul, ol {
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+
+blockquote {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: var( --color-extralight-gray );
+    border-left: 5px solid var(--color-light-purple);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+/* TABLE ITEMS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid var(--table-border-color);
+    background-color: var(--table-header-background);
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid var(--table-border-color);
+    text-align: left;
+    color: var( --color-main-p-text);
+}
+
+
+
+/* 
+pre and code are used for code blocks
+these items are handled with highlight.js 
+*/
+
+code {
+    background: var(--color-extralight-gray);
+}
+
+
+
+
+
+
+
+
+
+
+
+.footnotes {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--color-sidebar-background);
+    color: var(--color-main-p-text);
+    /* text-align: center; */
+} 
